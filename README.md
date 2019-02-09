@@ -1,4 +1,4 @@
-# spotify-fingerprint
+# SpotifyFingerprint
 
 ![Screenshot](screenshot.png)
 
