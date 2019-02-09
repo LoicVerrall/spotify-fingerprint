@@ -1,5 +1,7 @@
 # spotify-fingerprint
 
+![Screenshot](screenshot.png)
+
 ## Project setup
 ```
 npm install
