@@ -1,4 +1,6 @@
-# spotify-fingerprint
+# SpotifyFingerprint
+
+![Screenshot](screenshot.png)
 
 ## Project setup
 ```
