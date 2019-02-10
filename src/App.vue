@@ -2,21 +2,25 @@
   <div id="app">
     <Main />
     <verte picker="square" model="rgb"></verte>
+
   </div>
 </template>
 
 <script>
+
 import Main from './components/Main.vue'
 import Verte from 'verte';
 import Vue from 'vue';
 import 'verte/dist/verte.css';
 Vue.component('verte', Verte);
 
+
 export default {
   name: 'app',
   components: {
     Main,
     Verte
+
   }
 }
 </script>
