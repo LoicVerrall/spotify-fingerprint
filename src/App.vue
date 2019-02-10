@@ -1,22 +1,17 @@
 <template>
   <div id="app">
-    <Main />
-    <verte picker="square" model="rgb"></verte>
+    <img alt="Vue logo" src="./assets/logo/logo.png" width="80">
+    <HelloWorld msg="Welcome to SpotifyFingerprint"/>
   </div>
 </template>
 
 <script>
-import Main from './components/Main.vue'
-import Verte from 'verte';
-import Vue from 'vue';
-import 'verte/dist/verte.css';
-Vue.component('verte', Verte);
+import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'app',
   components: {
-    Main,
-    Verte
+    HelloWorld
   }
 }
 </script>
@@ -27,7 +22,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50; /* Branding green */
-  margin-top: 50px;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>
