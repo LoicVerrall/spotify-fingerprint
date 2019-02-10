@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "verte": "0.0.10",
+    "spotify-web-api-js": "^1.2.0",
     "vue": "^2.5.22"
   },
   "devDependencies": {
