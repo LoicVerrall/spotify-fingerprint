@@ -5,11 +5,23 @@
     <p>
       Fancy a visual 'fingerprint' of your Spotify Top Songs profile? SpotifyFingerprint has got you covered.
     </p>
-    <h3>1. Log in to your Spotify account.</h3>
-    <h3>2. Choose an artist, album, playlist, or song.</h3>
-    <h3>3. Generate your bespoke musical fingerprint.</h3>
-    <a @click="getSongData()"><div class="cta">Get Data</div></a>
-    <a @click="getSongAverages()"><div class="cta">Generate Fingerprint</div></a>
+
+    <h3>1. Supply your Spotify Access Token.</h3>
+    <input placeholder="Spotify Access Token" v-model="accessToken" />
+
+    <h3>2. Provide Spotify playlist ID.</h3>
+    <input placeholder="Spotify playlist ID" v-model="playlistID"/>
+    <a @click="getSongData()"><div class="cta" style="margin-top: 20px;">Retrieve Playlist</div></a>
+
+    <h3>3. Fetch the next song in your playlist.</h3>
+    <a @click="getSongAverages()"><div class="cta">Fetch Song</div></a>
+
+    <h3>4. Choose a colour that you feel represents this song — this is your fingerprint.</h3>
+    <verte picker="square" model="hex"></verte>
+
+    <h3>5. Upload your fingerprint.</h3>
+    <a @click="getSongAverages()"><div class="cta">Upload Fingerprint</div></a>
+
     <h3>{{ danceabilityAvg }}</h3>
     <h3>{{ tempoAvg }}</h3>
     <h3>{{ energyAvg }}</h3>
@@ -20,6 +32,11 @@
 </template>
 
 <script>
+  import Verte from 'verte';
+  import Vue from 'vue';
+  import 'verte/dist/verte.css';
+  Vue.component('verte', Verte);
+
   var Spotify = require('spotify-web-api-js')
 
   export default {
@@ -27,7 +44,7 @@
     data: function() {
       return {
         songCollection: [],
-        jackToken: 'BQBk0HJ-6uNJtdvRPRdi-Ciec4RrLWX7EsFksyOq-yFmDRaSaNihRTZscxhGkU7jNMCvCXTkd8iN_gUieFRxjUfj96emqzt1WgrKtC4WmWIl0QWRj--jvbeSmgkGe5BjOqpGHapFTyPtDTQcRg',
+        accessToken: 'BQAAW7soVySo-ZtSk-ZigfqWtUMw9IWiQ6WvZTYnzOSeAj8bP5TMsfpDSoiWDTCPYLCYNmB9lIPl2_nUdbI97iiyp6yyuSq8tFof4Hx725Jok99ot-c90ZRiZnTaqA-XFrhHW03qLDWA42XNhVkhYotPaBXo',
         playlistID: '3fVeOU4Nz3VcgtJx5PToqQ',
         danceabilityAvg: '',
         tempoAvg: '',
@@ -42,7 +59,7 @@
       getSongData: function() {
         var s = new Spotify()
         var tempList = []
-        s.setAccessToken(this.jackToken);
+        s.setAccessToken(this.accessToken);
         s.getPlaylist(this.playlistID, function(err, data) {
           if (err) console.error(err);
           else {
@@ -104,7 +121,7 @@
 
 <style scoped>
   h3 {
-    margin: 40px 0 0;
+    margin: 40px 0 20px;
   }
 
   .container {
@@ -122,10 +139,21 @@
     background-color: #1bd760;
     color: white;
     text-decoration: none;
+    cursor: pointer;
     width: 200px;
   }
 
   a {
     text-decoration: none;
+  }
+
+  input {
+    font-size: 14pt;
+    padding: 10px;
+    width: 70%;
+    min-width: 200px;
+    height: 35px;
+    border-radius: 12px;
+    border: 3px solid lightgray;
   }
 </style>
